@@ -1,0 +1,9 @@
+<div class="container"> 
+    <app-header></app-header>
+    <div class="entrence">
+        <h1 class="greetings">Hello Customer</h1>
+        <h2><i>Please enter your name in order us to understand<br/>for who this order belongs</i></h2>
+        <input type="text" [(ngModel)]="name" (keyup.enter)="onEnter()">
+        
+    </div>
+</div>
