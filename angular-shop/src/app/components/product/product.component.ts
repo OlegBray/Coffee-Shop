@@ -11,7 +11,6 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class ProductComponent implements OnInit {
 
   productsData:Products[] = [];
-  name?:String;
 
   constructor(
     private route:ActivatedRoute,
@@ -20,10 +19,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productsData = data.map((p) => {return new Products(p)});
     console.log(this.productsData); 
-  }
-
-  onEnter(){
-    this.router.navigate(['/'])
   }
 
 }

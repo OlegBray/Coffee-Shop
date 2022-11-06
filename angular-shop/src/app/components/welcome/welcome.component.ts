@@ -13,12 +13,17 @@ export class WelcomeComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private router:Router) { }
-    
+
   ngOnInit(): void {
   }
   
-  onEnter(){
-    this.router.navigate(['/products']);
+    onEnter(){
+    if(this.name === undefined){
+      alert('Dear customer please enter your name');
+    }
+    else{
+      this.router.navigate(['/products']);
+    }
   }
 
 }
