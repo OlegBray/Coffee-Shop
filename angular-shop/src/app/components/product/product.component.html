@@ -1,70 +1,111 @@
-<div class="container"> 
+<div class="container">
     <app-header></app-header>
-    <button mat-icon-button 
-            *ngIf="sidenav.mode === 'over'" 
-            (click)="sidenav.toggle()"
-            class="menu-icon">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
-    </button>
+    <div class="menu-icon-con">
+        <button  
+                *ngIf="sidenav.mode === 'over'" 
+                (click)="sidenav.toggle()" 
+                class="menu-icon">
+            <mat-icon *ngIf="!sidenav.opened">
+                menu
+            </mat-icon>
+            <mat-icon *ngIf="sidenav.opened">
+                close
+            </mat-icon>
+            Menu
+        </button>
+    </div>
     <mat-sidenav-container>
         <mat-sidenav #sidenav="matSidenav">
             <h2>Hot Beverage</h2>
             <hr>
             <div class="dish-container">
-                <button class="dish" *ngFor="let dish of hotBeverage;">
+                <button 
+                    class="dish" 
+                    *ngFor="let dish of hotBeverage;"
+                    (click)="onSelect(dish)"
+                    >
                     <h3>{{dish.dishName}}</h3>
                 </button>
             </div>
 
-            <br/>
+            <br />
 
             <h2>Cold Beverage</h2>
             <hr>
             <div class="dish-container">
-                <button class="dish" *ngFor="let dish of coldBeverage;">
+                <button 
+                    class="dish" 
+                    *ngFor="let dish of coldBeverage;"
+                    (click)="onSelect(dish)"
+                    >
                     <h3>{{dish.dishName}}</h3>
                 </button>
             </div>
 
-            <br/>
+            <br />
 
             <h2>Appetizers</h2>
             <hr>
             <div class="dish-container">
-                <button class="dish" *ngFor="let dish of appetizer;">
+                <button 
+                    class="dish" 
+                    *ngFor="let dish of appetizer;"
+                    (click)="onSelect(dish)"
+                    >
                     <h3>{{dish.dishName}}</h3>
                 </button>
             </div>
 
-            <br/>
+            <br />
 
             <h2>Entree</h2>
             <hr>
             <div class="dish-container">
-                <button class="dish" *ngFor="let dish of entree;">
+                <button 
+                    class="dish"
+                    *ngFor="let dish of entree;"
+                    (click)="onSelect(dish)"
+                    >
                     <h3>{{dish.dishName}}</h3>
                 </button>
             </div>
 
-            <br/>
+            <br />
 
             <h2>Dessert</h2>
             <hr>
             <div class="dish-container">
-                <button class="dish" *ngFor="let dish of dessert;">
+                <button 
+                    class="dish" 
+                    *ngFor="let dish of dessert;"
+                    (click)="onSelect(dish)"
+                    >
                     <h3>{{dish.dishName}}</h3>
                 </button>
             </div>
         </mat-sidenav>
 
         <mat-sidenav-content>
-            <div class="content" mat-elevation-z4>
-                main content
+            <div class="content-container" mat-elevation-z4 *ngIf="isSelected === true">
+                <div class="content">
+                    <img 
+                    [src]="selectedItem?.dishPicture" 
+                    class="product-image"
+                    >
+                    <div class="details">
+                        <h1 class="title">{{selectedItem?.dishName}}</h1>
+                        <h2 class="price">{{selectedItem?.dishPrice}}₪</h2>
+                        <h3 class="main"><i>{{selectedItem?.dishDescription}}</i></h3>
+                    </div>
+                </div>
+                <div class="add-to-cart">
+                    <button class="btn-add-to-cart">
+                        <mat-icon>
+                            card_travel
+                        </mat-icon>
+                        Add To Cart
+                    </button>
+                </div>    
             </div>
         </mat-sidenav-content>
     </mat-sidenav-container>

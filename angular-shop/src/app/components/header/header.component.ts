@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,20 +7,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(
-    private location:Location, 
+  
+  constructor( 
     private route:ActivatedRoute,
     private router:Router) { }
 
   ngOnInit(): void {
   }
-  goBack(){
-    this.location.back();
-  }
 
   onPress(){
     this.router.navigate(['/home']);
   }
-
 }

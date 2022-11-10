@@ -4,7 +4,6 @@ import data from '../../../assets/data';
 import { ActivatedRoute, Router} from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { throws } from 'assert';
 
 @Component({
   selector: 'app-product',
@@ -22,6 +21,10 @@ export class ProductComponent implements OnInit {
   appetizer: any[] = [];
   entree: any[] = [];
   dessert: any[] = [];
+
+  selectedItem?:Products;
+  isSelected:Boolean = false;
+  toShow!:Boolean;
 
   constructor(
     private route:ActivatedRoute,
@@ -42,10 +45,17 @@ export class ProductComponent implements OnInit {
       if(res.matches){
         this.sidenav.mode = 'over';
         this.sidenav.close();
+        this.toShow=true;
       }else{
         this.sidenav.mode = 'side';
         this.sidenav.open();
+        this.toShow=false;
       }
     });
+  }
+
+  onSelect(obj:Products){
+    this.selectedItem = obj;
+    this.isSelected = true;
   }
 }
