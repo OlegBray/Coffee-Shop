@@ -18,4 +18,12 @@ export class HeaderComponent implements OnInit {
   onPress(){
     this.router.navigate(['/home']);
   }
+  hidden(){
+    if(window.location.pathname === '/home')
+      return true;
+    return false;
+  }
+  transferToCart(){
+    this.router.navigate(['/cart']);
+  }
 }

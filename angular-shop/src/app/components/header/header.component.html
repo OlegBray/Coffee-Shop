@@ -1,5 +1,13 @@
 <div class="container">
     <div class="logo">
         <button (click)="onPress()"><h1>CoffeeShop</h1></button>
+        <div class="cart-btn" [hidden]="hidden()">
+            <button class="btn" (click)="transferToCart()">
+                <mat-icon>
+                    shopping_cart
+                </mat-icon>
+                <h3>Cart</h3>
+            </button>
+        </div>
     </div>
 </div>

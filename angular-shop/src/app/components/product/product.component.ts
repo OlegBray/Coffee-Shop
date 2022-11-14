@@ -4,6 +4,7 @@ import data from '../../../assets/data';
 import { ActivatedRoute, Router} from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { LocalService } from '../../services/local.service';
 
 @Component({
   selector: 'app-product',
@@ -25,11 +26,13 @@ export class ProductComponent implements OnInit {
   selectedItem?:Products;
   isSelected:Boolean = false;
   toShow!:Boolean;
+  selectedItems:any[] = [];
 
   constructor(
     private route:ActivatedRoute,
     private router:Router,
-    private observer:BreakpointObserver) { }
+    private observer:BreakpointObserver,
+    private localStorage:LocalService) { }
 
   ngOnInit(): void {
     this.productsData = data.map((p) => {return new Products(p)});
@@ -37,7 +40,7 @@ export class ProductComponent implements OnInit {
     this.coldBeverage = this.productsData.filter(cat => cat.dishCategory === "ColdBeverages");
     this.appetizer = this.productsData.filter(cat => cat.dishCategory === "Appetizer");
     this.entree = this.productsData.filter(cat => cat.dishCategory === "Entree");
-    this.dessert = this.productsData.filter(cat => cat.dishCategory === "Dessert");
+    this.dessert = this.productsData.filter(cat => cat.dishCategory === "Dessert"); 
   }
 
   ngAfterViewInit(){
@@ -58,4 +61,10 @@ export class ProductComponent implements OnInit {
     this.selectedItem = obj;
     this.isSelected = true;
   }
+
+  onAdd(){
+    this.selectedItems = this.selectedItems.concat(this.selectedItem);
+    this.localStorage.saveData('cart', JSON.stringify(this.selectedItems));
+  }
+
 }

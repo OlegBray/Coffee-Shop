@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalService } from 'src/app/services/local.service';
 
 @Component({
   selector: 'app-welcome',
@@ -13,7 +14,8 @@ export class WelcomeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private localStorage:LocalService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +26,7 @@ export class WelcomeComponent implements OnInit {
     }
     else {
       this.attention = '';
+      this.localStorage.saveData('name', JSON.stringify(this.name));
       this.router.navigate(['/products']);
     }
   }

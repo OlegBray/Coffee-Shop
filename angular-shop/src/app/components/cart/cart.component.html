@@ -1,1 +1,19 @@
-<p>cart works!</p>
+<div class="container">
+    <app-header></app-header>
+    <div class="payout-con">
+        <div class="products-picked-con">
+            <div class="product-detail" *ngFor="let item of localItems;index as i;">
+                <h3>{{item.dishName}} {{item.dishPrice}}₪</h3>
+                <button class="remove" (click)="onDelete(i)">
+                    <mat-icon>
+                        remove_circle_outline
+                    </mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="submit-con">
+        <h1>Price: {{sumPrice}}₪</h1>
+        <button class="submit" (click)="onPay()">Pay</button>
+    </div>
+</div>
