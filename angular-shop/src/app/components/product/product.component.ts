@@ -22,11 +22,13 @@ export class ProductComponent implements OnInit {
   appetizer: any[] = [];
   entree: any[] = [];
   dessert: any[] = [];
+  added:boolean = false;
 
   selectedItem?:Products;
   isSelected:Boolean = false;
   toShow!:Boolean;
   selectedItems:any[] = [];
+  amountOfItems?:number = 0;
 
   constructor(
     private route:ActivatedRoute,
@@ -41,6 +43,10 @@ export class ProductComponent implements OnInit {
     this.appetizer = this.productsData.filter(cat => cat.dishCategory === "Appetizer");
     this.entree = this.productsData.filter(cat => cat.dishCategory === "Entree");
     this.dessert = this.productsData.filter(cat => cat.dishCategory === "Dessert"); 
+    this.amountOfItems = parseInt(this.localStorage?.getData('amount')||'');
+    
+    if(this.amountOfItems == null || isNaN(this.amountOfItems))
+    { this.amountOfItems = 0; }
   }
 
   ngAfterViewInit(){
@@ -65,6 +71,11 @@ export class ProductComponent implements OnInit {
   onAdd(){
     this.selectedItems = this.selectedItems.concat(this.selectedItem);
     this.localStorage.saveData('cart', JSON.stringify(this.selectedItems));
+    this.amountOfItems = this.selectedItems.length;
+    this.localStorage.saveData('amount', JSON.stringify(this.amountOfItems));
+    this.added = true;
+    setTimeout(() => {
+      this.added = false;
+    }, 1000);
   }
-
 }

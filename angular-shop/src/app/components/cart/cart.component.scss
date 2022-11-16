@@ -30,8 +30,6 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             &::-webkit-scrollbar{
                 width: 15px;
             }
@@ -46,25 +44,32 @@
             &::-webkit-scrollbar-thumb:hover {
                 background: #555;
             }
+            .headers{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                color: white;
+                width: 100%;
+                height: auto;
+                margin-top: 5px;
+                h2{
+                    font-size: 32px;
+                }
+            }
             .product-detail{
                 width: 100%;
                 height: auto;
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
-                align-items: flex-start;
                 margin-top: 5px;
-                h3{
-                    color: white;
-                    font-size: 24px;
-                }
+                margin-left: 5px;
                 .remove{
                     background-color: #00000000;
                     color: white;
                     border-radius: 50px;
                     border-width: 0px;
-                    margin-left: 10px;
-                    width: 20px;
+                    margin-right: 10px;
+                    width: 5%;
                     height: 20px;
                     display: flex;
                     align-items: center;
@@ -77,6 +82,77 @@
                     border-radius: 50px;
                     border-width: 1px;
                     cursor: pointer;
+                }
+                .name{
+                    width: 25%;
+                    color: white;
+                    font-size: 44px;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    h3{
+                        font-size: 18px;
+                    }
+                }
+                .amount{
+                    width: 20%;
+                    display: flex;
+                    flex-direction: row;
+                    height: inherit;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    .plus{
+                        height: 30px;
+                        width: 30px;
+                        margin-left: 5px;
+                        background-color: #000000aa;
+                        color: white;
+                        border-color: white;
+                        margin-bottom: 15px;
+                    }
+                    .plus:hover{
+                        background-color: white;
+                        color: black;
+                        cursor: pointer;
+                    }
+                    .minus{
+                        height: 30px;
+                        width: 30px;
+                        margin-right: 5px;
+                        background-color: #000000aa;
+                        color: white;
+                        border-color: white;
+                        margin-bottom: 15px;
+                    }
+                    .minus:hover{
+                        background-color: white;
+                        color: black;
+                        cursor: pointer;
+                    }
+                }
+                .price{
+                    width: 25%;
+                    height: auto;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    h3{
+                        font-size: 24px;
+                    }
+                }
+                .overall{
+                    width: 25%;
+                    height: auto;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    h3{
+                        font-size: 24px;
+                    }
                 }
             }
         }

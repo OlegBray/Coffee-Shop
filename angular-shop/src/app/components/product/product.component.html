@@ -14,6 +14,9 @@
             Menu
         </button>
     </div>
+    <div class="amount-in-cart">
+        <h2 class="amount">Shopping Cart: {{amountOfItems}} items</h2>
+    </div>
     <mat-sidenav-container>
         <mat-sidenav #sidenav="matSidenav">
             <h2>Hot Beverage</h2>
@@ -104,6 +107,9 @@
                             card_travel
                         </mat-icon>
                         Add To Cart
+                        <div class="added" *ngIf="added">
+                            <h2>Item succesfuly added</h2>
+                        </div>
                     </button>
                 </div>    
             </div>

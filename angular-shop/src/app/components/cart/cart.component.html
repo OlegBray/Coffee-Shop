@@ -2,18 +2,45 @@
     <app-header></app-header>
     <div class="payout-con">
         <div class="products-picked-con">
+            <div class="headers">
+                <h2>Item Name</h2>
+                <h2>Amount</h2>
+                <h2>Price</h2>
+                <h2>Overall</h2>
+            </div>
+            <hr>
             <div class="product-detail" *ngFor="let item of localItems;index as i;">
-                <h3>{{item.dishName}} {{item.dishPrice}}₪</h3>
                 <button class="remove" (click)="onDelete(i)">
                     <mat-icon>
                         remove_circle_outline
                     </mat-icon>
                 </button>
+                <div class="name">
+                    <h3>{{item.dishName}}</h3>
+                </div>
+
+                <div class="amount">
+                    <button class="minus" (click)="onRemove(item.amount ,i)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                    <h2>{{item.amount}}</h2>
+                    <button class="plus" (click)="onPlus(item.amount, i)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div class="price">
+                    <h3>{{item.dishPrice}}₪</h3>
+                </div>
+                <div class="overall">
+                    <h3>{{overallOrRegular(item)}}₪</h3>
+                </div>
+
+                
             </div>
         </div>
     </div>
     <div class="submit-con">
-        <h1>Price: {{sumPrice}}₪</h1>
+        <h1>Price: {{summerize()}}₪</h1>
         <button class="submit" (click)="onPay()">Pay</button>
     </div>
 </div>

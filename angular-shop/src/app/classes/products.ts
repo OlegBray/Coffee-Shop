@@ -4,9 +4,11 @@ export class Products {
     dishPicture?: String;
     dishCategory?: String;
     dishSize?: String;
-    dishPrice?: String;
+    dishPrice?: string;
     dishDescription?: String;
     dishVeganOption?: Boolean;
+    amount:number = 1;
+    overallPrice:string = this.dishPrice||'';
 
     constructor(args?: any) {
         if (typeof args !== 'undefined' && typeof args === 'object') {
@@ -15,5 +17,5 @@ export class Products {
           console.log(typeof args);
         }
     }
-
+    
 }
