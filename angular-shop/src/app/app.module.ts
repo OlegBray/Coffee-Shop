@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductComponent } from './components/product/product.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     CartComponent,
     ProductComponent,
-    ProductDetailComponent,
     HeaderComponent,
     HomeComponent,
     WelcomeComponent
