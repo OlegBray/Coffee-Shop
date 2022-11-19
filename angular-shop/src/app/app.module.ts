@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { SummaryComponent } from './components/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProductComponent,
     HeaderComponent,
     HomeComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

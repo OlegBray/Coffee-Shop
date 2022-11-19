@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalService } from '../../services/local.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   
+  emptyArray:any[] = [];
+  hide:boolean = false;
+
   constructor( 
     private route:ActivatedRoute,
-    private router:Router) { }
+    private router:Router,
+    private localStorage:LocalService,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +30,12 @@ export class HeaderComponent implements OnInit {
     return false;
   }
   transferToCart(){
-    this.router.navigate(['/cart']);
+    if(this.localStorage.getData('cart') === undefined || 
+      JSON.parse(this.localStorage.getData('cart')||'') === this.emptyArray ){
+        this.hide = true;
+    }
+    else{
+      this.router.navigate(['/cart']);
+    }
   }
 }

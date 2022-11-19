@@ -15,7 +15,7 @@
         </button>
     </div>
     <div class="amount-in-cart">
-        <h2 class="amount">Shopping Cart: {{amountOfItems}} items</h2>
+        <h2 class="amount" *ngIf="quantityCheck()">Shopping Cart: {{amountOfItems}} items</h2>
     </div>
     <mat-sidenav-container>
         <mat-sidenav #sidenav="matSidenav">

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="back-img">
+        <app-header></app-header>
+        <img src="https://i0.wp.com/images.xceed.me/bars/covers/blackmarket-hall-bar-roma-xceed3e7c.jpg?ssl=1">
+        <div class="summary-container">
+            <div class="summary">
+                <div class="headers">
+                    <h1>Name</h1>
+                    <h1>Amount</h1>
+                </div>
+                <hr>
+                <br/>
+                <div class="items-con">
+                    <div class="items" *ngFor="let item of selectedItems">
+                        <h2 class="name">{{item.dishName}}</h2>
+                        <h2 class="amount">{{item.amount}}</h2>    
+                    </div>
+                </div>
+            </div>
+            <button class="order" (click)="finished()">Order</button>
+            <div class="ordered" *ngIf="ordered">
+                <h2 class="appreciation"><b><i>Thank you for ordering in CoffeeShop</i></b></h2>
+                <h3 class="approx"><i>Approx time: 10 min</i></h3>
+                <h3 class="waiter"><i>The waiter will come to you as soon the order is ready</i></h3>
+            </div>
+        </div>
+    </div>
+</div>

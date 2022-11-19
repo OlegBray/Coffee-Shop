@@ -38,11 +38,7 @@ export class CartComponent implements OnInit {
   }
 
   onPay(){
-    alert('Transaction has been succesfuly transmited');
-    this.localStorage.clearData();
-    this.localItems = [];
-    this.sumPrice = 0;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/summary']);
   }
 
   onPlus(c:number, index:number){
@@ -54,15 +50,16 @@ export class CartComponent implements OnInit {
   }
 
   onRemove(c:number ,index:number){
-    c--;
-    this.localItems[index].amount = c;
-    let x = parseInt(this.localItems[index].dishPrice) * c;
-    this.localItems[index].overallPrice = x.toString();
-    this.sumPrice -= parseInt(this.localItems[index].dishPrice);
-    this.localStorage.saveData('cart', JSON.stringify(this.localItems));
-    if(c == 0){
-      this.onDelete(index);
+    if(this.localItems[index].amount == 1){
       return;
+    }
+    else{
+      c--;
+      this.localItems[index].amount = c;
+      let x = parseInt(this.localItems[index].dishPrice) * c;
+      this.localItems[index].overallPrice = x.toString();
+      this.sumPrice -= parseInt(this.localItems[index].dishPrice);
+      this.localStorage.saveData('cart', JSON.stringify(this.localItems));
     }
   }
 

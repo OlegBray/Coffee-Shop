@@ -69,13 +69,42 @@ export class ProductComponent implements OnInit {
   }
 
   onAdd(){
-    this.selectedItems = this.selectedItems.concat(this.selectedItem);
-    this.localStorage.saveData('cart', JSON.stringify(this.selectedItems));
+    if(this.addCheck()==true){
+      this.localStorage.saveData('cart', JSON.stringify(this.selectedItems));
+    }
+    else{
+      this.selectedItems = this.selectedItems.concat(this.selectedItem);
+      this.localStorage.saveData('cart', JSON.stringify(this.selectedItems));
+    }
     this.amountOfItems = this.selectedItems.length;
     this.localStorage.saveData('amount', JSON.stringify(this.amountOfItems));
     this.added = true;
     setTimeout(() => {
       this.added = false;
     }, 1000);
+  }
+
+  quantityCheck(){
+    if(this.amountOfItems === 0){
+      return false;
+    }
+    return true;
+  }
+
+  addCheck(){
+    if(this.selectedItems.length==0)
+      return false;
+    else{
+      for(let i=0;i<this.selectedItems.length;i++){
+        if(this.selectedItems[i]===this.selectedItem){
+          this.selectedItems[i].amount++;
+          let x = parseInt(this.selectedItems[i].overallPrice);
+          x = this.selectedItems[i].dishPrice;
+          this.selectedItems[i].overallPrice = JSON.stringify(x * this.selectedItems[i].amount);
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
